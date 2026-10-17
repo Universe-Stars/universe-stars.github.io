@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         <p class="desc">${post.desc}</p>
       `;
       postListEl.appendChild(li);
-      // 触发动画
       setTimeout(()=>{
         li.style.opacity = "1";
         li.style.transform = "translateY(0)";
