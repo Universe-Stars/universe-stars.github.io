@@ -121,7 +121,15 @@ p {
   border-radius: 16px;
   padding: 1.4rem;
   box-shadow: 0 2px 8px var(--shadow);
-  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  /* 准备滚动动画初始状态 */
+  opacity: 0;
+  transform: translateY(24px);
+  transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease, opacity 0.45s ease;
+}
+/* 进入视口后添加这个class，触发动画 */
+.post-list li.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 .post-list li:hover {
   transform: translateY(-5px) scale(1.01);

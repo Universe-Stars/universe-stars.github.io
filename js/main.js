@@ -5,22 +5,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     const posts = await res.json();
     posts.sort((a,b) => new Date(b.date) - new Date(a.date));
 
-    posts.forEach((post, index) => {
+    posts.forEach((post) => {
       const li = document.createElement('li');
-      li.style.opacity = "0";
-      li.style.transform = "translateY(16px)";
-      li.style.transition = `all 0.45s ease ${index * 0.12}s`;
       li.innerHTML = `
         <span class="date">${post.date}</span>
         <a href="${post.url}">${post.title}</a>
         <p class="desc">${post.desc}</p>
       `;
       postListEl.appendChild(li);
-      setTimeout(()=>{
-        li.style.opacity = "1";
-        li.style.transform = "translateY(0)";
-      }, 50)
     });
+
+    // IntersectionObserver：元素进入视口触发动画
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      })
+    }, { threshold: 0.1 });
+
+    // 监听所有卡片
+    document.querySelectorAll('.post-list li').forEach(item => {
+      observer.observe(item);
+    })
+
   } catch (err) {
     postListEl.innerHTML = "<li>暂时没有文章</li>";
     console.error("加载文章失败", err);
