@@ -1,57 +1,121 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>第一篇博客文章 | Universe-Stars</title>
-  <link rel="stylesheet" href="../css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>示例文章</title>
+<link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
-<div class="page-wrap">
-  <aside class="sidebar">
-    <div class="brand">Universe-Stars</div>
-    <button class="hamburger">☰</button>
-    <nav>
-      <ul>
-        <li><a href="../index.html">首页</a></li>
-        <li><a href="../about.html">关于</a></li>
-      </ul>
-    </nav>
-  </aside>
-
-  <main class="main-content">
-    <div class="container">
-      <h1>第一篇博客文章</h1>
-      <p>这是我的第一篇手写HTML博客，托管在 GitHub Pages。</p>
-      <h3>代码演示</h3>
-<pre><code>console.log("Hello Blog!");
-</code></pre>
-
-      <footer class="site-footer">
-        <p>© 2026 Universe-Stars</p>
-      </footer>
-    </div>
-  </main>
+<!-- 骨架屏 -->
+<div class="skeleton-wrap" id="skeletonWrap">
+  <div class="skeleton-container">
+    <div class="skeleton-line skeleton-title"></div>
+    <div class="skeleton-line skeleton-meta"></div>
+    <div class="skeleton-line skeleton-p"></div>
+    <div class="skeleton-line skeleton-p"></div>
+    <div class="skeleton-line skeleton-p short"></div>
+    <div class="skeleton-line skeleton-img"></div>
+    <div class="skeleton-line skeleton-p"></div>
+    <div class="skeleton-line skeleton-p"></div>
+    <div class="skeleton-line skeleton-p"></div>
+    <div class="skeleton-line skeleton-p short"></div>
+  </div>
 </div>
 
-<script>
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.sidebar nav');
-hamburger.addEventListener('click', ()=>{
-  navMenu.classList.toggle('open');
-})
+<!-- 顶部阅读进度条 -->
+<div class="reading-progress"></div>
 
-// 导航高亮
-document.addEventListener('DOMContentLoaded', () => {
-  const links = document.querySelectorAll('.sidebar nav a');
-  const currentPath = window.location.pathname;
-  links.forEach(link => {
-    const href = link.getAttribute('href');
-    if (currentPath === href || currentPath.endsWith(href)) {
-      link.classList.add('active');
-    }
-  });
-});
+<!-- 导航栏 -->
+<header>
+  <button class="hamburger">☰</button>
+  <nav id="main-nav">
+    <a href="/">首页</a>
+    <a href="/posts">文章</a>
+  </nav>
+  <button id="themeToggle">切换主题</button>
+  <button id="searchToggle">搜索</button>
+</header>
+
+<main id="mainContent" style="opacity:0;transition:opacity 0.3s ease;">
+  <article style="max-width:720px;margin:0 auto;padding:0 1rem;">
+    <h1>示例文章标题</h1>
+    <div class="meta" style="margin-bottom:2rem;">
+      <span id="wordCount"></span>
+      <span id="readTime"></span>
+      <button id="copyLinkBtn">复制链接</button>
+      <div class="font-controller">
+        <button id="fontMinus">A-</button>
+        <button id="fontReset">A</button>
+        <button id="fontPlus">A+</button>
+      </div>
+    </div>
+
+    <h2>二级标题</h2>
+    <p>测试正文内容，测试静态博客全部功能。</p>
+    <h3>三级标题</h3>
+    <pre><code class="language-js">
+function hello(){
+  console.log("Hello Blog");
+}
+    </code></pre>
+    <p>图片测试：</p>
+    <img src="https://picsum.photos/id/1025/800/400" alt="demo">
+  </article>
+
+  <!-- TOC目录 -->
+  <aside id="tocWrap">
+    <ul id="tocList"></ul>
+  </aside>
+  <button id="tocToggle">目录</button>
+
+  <!-- 上一篇下一篇 -->
+  <div class="post-nav" id="postNav" style="max-width:720px;margin:3rem auto;padding:0 1rem;">
+    <div class="post-nav-card" id="prevCard">
+      <div class="post-nav-label">← 上一篇</div>
+      <a href="" id="prevLink"><div class="post-nav-title" id="prevTitle"></div></a>
+    </div>
+    <div class="post-nav-card" id="nextCard">
+      <div class="post-nav-label">下一篇 →</div>
+      <a href="" id="nextLink"><div class="post-nav-title" id="nextTitle"></div></a>
+    </div>
+  </div>
+</main>
+
+<!-- 搜索弹窗 -->
+<div id="searchWrap">
+  <input id="searchInput" placeholder="搜索文章">
+  <ul id="searchResult"></ul>
+</div>
+
+<!-- 图片灯箱 -->
+<div id="lightbox">
+  <button id="lightboxClose">×</button>
+  <img id="lightboxImg" alt="">
+</div>
+
+<!-- Toast -->
+<div id="copyToast"></div>
+
+<!-- 悬浮按钮组 -->
+<div class="float-btn-group">
+  <div class="progress-circle-wrap" id="progressCircleWrap">
+    <svg class="progress-circle" viewBox="0 0 44 44">
+      <circle class="progress-circle-bg" cx="22" cy="22" r="20" fill="none" stroke-width="2"/>
+      <circle class="progress-circle-value" id="progressCircle" cx="22" cy="22" r="20" fill="none" stroke-width="2" stroke-dasharray="125.6"/>
+    </svg>
+    <button id="scrollTopBtn">↑</button>
+  </div>
+  <button class="float-btn" id="scrollBottomBtn">↓</button>
+</div>
+
+<!-- 文章前后文章数据，模版渲染注入 -->
+<script>
+const prevPost = null;
+const nextPost = null;
 </script>
+
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/post.js"></script>
 </body>
 </html>
