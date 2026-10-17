@@ -1,22 +1,26 @@
-// DOM加载完成后执行
 document.addEventListener('DOMContentLoaded', async () => {
   const postListEl = document.querySelector('.post-list');
   try {
-    // 读取posts目录下的文章元数据
     const res = await fetch('posts/posts.json');
     const posts = await res.json();
-
-    // 按日期倒序（新文章放最上面）
     posts.sort((a,b) => new Date(b.date) - new Date(a.date));
 
-    posts.forEach(post => {
+    posts.forEach((post, index) => {
       const li = document.createElement('li');
+      li.style.opacity = "0";
+      li.style.transform = "translateY(16px)";
+      li.style.transition = `all 0.45s ease ${index * 0.12}s`;
       li.innerHTML = `
         <span class="date">${post.date}</span>
         <a href="${post.url}">${post.title}</a>
         <p class="desc">${post.desc}</p>
       `;
       postListEl.appendChild(li);
+      // 触发动画
+      setTimeout(()=>{
+        li.style.opacity = "1";
+        li.style.transform = "translateY(0)";
+      }, 50)
     });
   } catch (err) {
     postListEl.innerHTML = "<li>暂时没有文章</li>";
