@@ -1,20 +1,25 @@
-// 平滑滚动
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if(target) target.scrollIntoView({behavior: 'smooth'});
-    });
-});
+// DOM加载完成后执行
+document.addEventListener('DOMContentLoaded', async () => {
+  const postListEl = document.querySelector('.post-list');
+  try {
+    // 读取posts目录下的文章元数据
+    const res = await fetch('posts/posts.json');
+    const posts = await res.json();
 
-// 卡片悬浮动画
-document.querySelectorAll('.card').forEach(card=>{
-    card.addEventListener('mouseenter', ()=>{
-        card.style.transform = "translateY(-4px)";
-        card.style.boxShadow = "0 8px 24px rgba(59, 130, 246, 0.2)";
-    })
-    card.addEventListener('mouseleave', ()=>{
-        card.style.transform = "translateY(0)";
-        card.style.boxShadow = "none";
-    })
-})
+    // 按日期倒序（新文章放最上面）
+    posts.sort((a,b) => new Date(b.date) - new Date(a.date));
+
+    posts.forEach(post => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span class="date">${post.date}</span>
+        <a href="${post.url}">${post.title}</a>
+        <p class="desc">${post.desc}</p>
+      `;
+      postListEl.appendChild(li);
+    });
+  } catch (err) {
+    postListEl.innerHTML = "<li>暂时没有文章</li>";
+    console.error("加载文章失败", err);
+  }
+});

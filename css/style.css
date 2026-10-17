@@ -1,143 +1,99 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #111827;
-    color: #e5e7eb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.7;
+  color: #222;
+  background-color: #ffffff;
 }
 
-/* ========== 侧边导航栏 ========== */
-.sidebar {
-    position: fixed;
-    top: 2rem;
-    left: 2rem;
-    width: 180px;
-    background: #1f2937;
-    border: 1px solid #334155;
-    border-radius: 12px;
-    padding: 18px;
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-.sidebar-title {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 16px;
-    color: #ffffff;
-    border-bottom: 1px solid #374151;
-    padding-bottom: 8px;
+.site-header {
+  padding: 2rem 1rem;
+  max-width: 720px;
+  margin: 0 auto;
+  border-bottom: 1px solid #eee;
 }
 
-.side-nav a {
-    display: block;
-    color: #93c5fd;
-    text-decoration: none;
-    margin: 12px 0;
-    padding: 6px 4px;
-    border-radius: 6px;
-    transition: 0.2s ease;
+.site-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
 }
 
-.side-nav a:hover {
-    background-color: #374151;
-    color: #38bdf8;
+nav a {
+  color: #0066cc;
+  text-decoration: none;
+  margin-right: 1rem;
 }
 
-/* ========== 主内容区域 ========== */
-.main-content {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 2rem;
-    margin-left: 220px;
+nav a:hover {
+  text-decoration: underline;
 }
 
-header {
-    border-bottom: 1px solid #334155;
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
+h2 {
+  margin: 2rem 0 1rem;
+  font-size: 1.4rem;
 }
 
-h1 {
-    font-size: 2.2rem;
-    color: #ffffff;
+.post-list {
+  list-style: none;
 }
 
-.subtitle {
-    color: #94a3b8;
-    margin-top: 4px;
-    font-size: 1.05rem;
+.post-list li {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.section-title {
-    font-size: 1.4rem;
-    margin: 2rem 0 1rem;
-    color: #cbd5e1;
-    border-left: 4px solid #3b82f6;
-    padding-left: 10px;
+.post-list .date {
+  color: #666;
+  font-size: 0.9rem;
+  margin-right: 1rem;
 }
 
-.card {
-    background: #1f2937;
-    padding: 22px;
-    border-radius: 12px;
-    border: 1px solid #334155;
-    margin-bottom: 16px;
-    transition: all 0.25s ease;
+.post-list a {
+  font-size: 1.1rem;
+  color: #222;
+  text-decoration: none;
 }
 
-.card h3 {
-    color: #60a5fa;
-    margin-bottom: 6px;
+.post-list a:hover {
+  color: #0066cc;
+  text-decoration: underline;
 }
 
-.card p {
-    color: #9ca3af;
-    line-height: 1.7;
-}
-
-.card a {
-    color: #38bdf8;
-    text-decoration: none;
-}
-
-footer {
-    margin-top: 4rem;
-    padding-top: 1rem;
-    border-top: 1px solid #334155;
-    color: #64748b;
-    font-size: 0.9rem;
+.post-list .desc {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 0.3rem;
 }
 
 pre {
-    background: #1f2937;
-    padding: 16px;
-    border-radius: 8px;
-    overflow-x: auto;
-    margin: 16px 0;
+  background: #f7f7f7;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1rem 0;
 }
 
 code {
-    color: #a5f3fc;
+  font-family: Consolas, monospace;
 }
 
-a {
-    color: #38bdf8;
-    text-decoration: none;
-}
-
-/* ========== 移动端响应式：小屏幕侧边栏置顶 ========== */
-@media(max-width: 900px) {
-    .sidebar {
-        position: static;
-        width: 100%;
-        margin-bottom: 20px;
-        left: 0;
-        top: 0;
-    }
-    .main-content {
-        margin-left: 0;
-    }
+.site-footer {
+  max-width:720px;
+  margin: 3rem auto 1rem;
+  padding-top:1rem;
+  border-top:1px solid #eee;
+  font-size:0.9rem;
+  color:#666;
+  text-align:center;
 }
