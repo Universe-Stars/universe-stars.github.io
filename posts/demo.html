@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第一篇博客文章 | Universe-Stars</title>
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第一篇博客文章 | Universe-Stars</title>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
-
 <body>
-    <div class="page-wrap">
-        <aside class="sidebar">
-            <div class="brand">Universe-Stars</div>
-            <button class="hamburger">☰</button>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">首页</a></li>
-                    <li><a href="../about.html">关于</a></li>
-                </ul>
-            </nav>
-        </aside>
+<div class="page-wrap">
+  <aside class="sidebar">
+    <div class="brand">Universe-Stars</div>
+    <button class="hamburger">☰</button>
+    <nav>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../about.html">关于</a></li>
+      </ul>
+    </nav>
+  </aside>
 
-        <main class="main-content">
-            <div class="container">
-                <h1>第一篇博客文章</h1>
-                <p>这是我的第一篇手写HTML博客，托管在 GitHub Pages。</p>
-                <h3>代码演示</h3>
-                <pre><code>console.log("Hello Blog!");
+  <main class="main-content">
+    <div class="container">
+      <h1>第一篇博客文章</h1>
+      <p>这是我的第一篇手写HTML博客，托管在 GitHub Pages。</p>
+      <h3>代码演示</h3>
+<pre><code>console.log("Hello Blog!");
 </code></pre>
 
-                <footer class="site-footer">
-                    <p>© 2026 Universe-Stars</p>
-                </footer>
-            </div>
-        </main>
+      <footer class="site-footer">
+        <p>© 2026 Universe-Stars</p>
+      </footer>
     </div>
+  </main>
+</div>
 
-    <script>
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.sidebar nav');
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('open');
-        })
-    </script>
+<script>
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.sidebar nav');
+hamburger.addEventListener('click', ()=>{
+  navMenu.classList.toggle('open');
+})
+
+// 导航高亮
+document.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('.sidebar nav a');
+  const currentPath = window.location.pathname;
+  links.forEach(link => {
+    const href = link.getAttribute('href');
+    if (currentPath === href || currentPath.endsWith(href)) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>
 </body>
-
 </html>
