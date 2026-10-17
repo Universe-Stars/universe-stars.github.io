@@ -4,58 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Universe-Stars | 个人博客</title>
-    <!-- 路径：assets里面的css -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href=".css/style.css">
 </head>
 <body>
-    <header>
-        <h1>宇宙之星 Universe-Stars</h1>
-        <p class="subtitle">Android / NDK / ELF逆向 / 底层开发 技术博客</p>
-        <nav>
-            <a href="/">首页</a>
-            <a href="#about">关于我</a>
-            <a href="#projects">项目</a>
-            <a href="#articles">博客文章</a>
+    <!-- ========== 侧边导航 ========== -->
+    <aside class="sidebar">
+        <div class="sidebar-title">目录</div>
+        <nav class="side-nav">
+            <a href="#about">👨‍💻 关于我</a>
+            <a href="#projects">📦 开源项目</a>
+            <a href="#articles">📝 博客文章</a>
         </nav>
-    </header>
+    </aside>
 
-    <section id="about">
-        <h2 class="section-title">👨‍💻 关于我</h2>
-        <div class="card">
-            <p>Android原生开发爱好者，专注移动端底层逆向、ELF静态分析、内存调试。</p>
-            <p>正在开发：INSP（移动端交互式反汇编器）、ArkMem（动态内存调试工具）</p>
-        </div>
-    </section>
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <header>
+            <h1>宇宙之星 Universe-Stars</h1>
+            <p class="subtitle">Android / NDK / ELF逆向 / 底层开发 技术博客</p>
+        </header>
 
-    <section id="projects">
-        <h2 class="section-title">📦 开源项目</h2>
-        <div class="card">
-            <h3>INSP</h3>
-            <p>Android端交互式ELF反汇编工具，对标IDA Pro，支持ARM32 / AArch64，汇编、伪代码、CFG控制流图。</p>
-        </div>
-        <div class="card">
-            <h3>ArkMem</h3>
-            <p>Android Root动态内存调试工具，进程内存搜索、读写、SO注入调试。</p>
-        </div>
-    </section>
+        <section id="about">
+            <h2 class="section-title">👨‍💻 关于我</h2>
+            <div class="card">
+                <p>Android原生开发爱好者，专注移动端底层逆向、ELF静态分析、内存调试。</p>
+                <p>正在开发：INSP（移动端交互式反汇编器）、ArkMem（动态内存调试工具）</p>
+            </div>
+        </section>
 
-    <section id="articles">
-        <h2 class="section-title">📝 博客文章</h2>
-        <div class="card">
-            <h3><a href="article1.html">Android NDK 集成Capstone反汇编引擎完整教程</a></h3>
-            <p>2026-10-17 | INSP项目开发笔记</p>
-        </div>
-        <div class="card">
-            <h3><a href="article2.html">GitHub Pages + Actions 部署静态博客踩坑记录</a></h3>
-            <p>2026-10-17 | 建站记录</p>
-        </div>
-    </section>
+        <section id="projects">
+            <h2 class="section-title">📦 开源项目</h2>
+            <div class="card">
+                <h3>INSP</h3>
+                <p>Android端交互式ELF反汇编工具，对标IDA Pro，支持ARM32 / AArch64，汇编、伪代码、CFG控制流图。</p>
+            </div>
+            <div class="card">
+                <h3>ArkMem</h3>
+                <p>Android Root动态内存调试工具，进程内存搜索、读写、SO注入调试。</p>
+            </div>
+        </section>
 
-    <footer>
-        © 2026 Universe-Stars | Powered by GitHub Actions & GitHub Pages
-    </footer>
+        <section id="articles">
+            <h2 class="section-title">📝 博客文章</h2>
+            <div class="card">
+                <h3><a href="article1.html">Android NDK 集成Capstone反汇编引擎完整教程</a></h3>
+                <p>2026-10-17 | INSP项目开发笔记</p>
+            </div>
+            <div class="card">
+                <h3><a href="article2.html">GitHub Pages + Actions 部署静态博客踩坑记录</a></h3>
+                <p>2026-10-17 | 建站记录</p>
+            </div>
+        </section>
 
-    <!-- JS引用路径 -->
+        <footer>
+            © 2026 Universe-Stars | Powered by GitHub Actions & GitHub Pages
+        </footer>
+    </main>
+
     <script src="./js/main.js"></script>
 </body>
 </html>

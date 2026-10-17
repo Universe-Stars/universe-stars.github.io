@@ -8,10 +8,49 @@
 body {
     background-color: #111827;
     color: #e5e7eb;
-    padding: 2rem;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    width: 180px;
+    background: #1f2937;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.sidebar-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom:16px;
+    color:#ffffff;
+    border-bottom: 1px solid #374151;
+    padding-bottom:8px;
+}
+
+.side-nav a {
+    display:block;
+    color: #93c5fd;
+    text-decoration: none;
+    margin:12px 0;
+    padding: 6px 4px;
+    border-radius:6px;
+    transition: 0.2s;
+}
+.side-nav a:hover {
+    background-color:#374151;
+    color:#38bdf8;
+}
+
+/* 主内容区，给侧边栏留出空间 */
+.main-content {
     max-width: 960px;
-    margin: 0 auto;
-    line-height: 1.7;
+    margin:0 auto;
+    padding:2rem;
+    margin-left:220px;
 }
 
 header {
@@ -29,23 +68,6 @@ h1 {
     color: #94a3b8;
     margin-top: 4px;
     font-size: 1.05rem;
-}
-
-nav {
-    margin: 1rem 0;
-    display: flex;
-    gap: 2rem;
-}
-
-nav a {
-    color: #93c5fd;
-    text-decoration: none;
-    font-size: 1.05rem;
-}
-
-nav a:hover {
-    color: #38bdf8;
-    text-decoration: underline;
 }
 
 .section-title {
@@ -102,4 +124,18 @@ code {
 a {
     color: #38bdf8;
     text-decoration: none;
+}
+
+/* 移动端适配：屏幕小的时候侧边栏放到顶部 */
+@media(max-width:900px){
+    .sidebar{
+        position:static;
+        width:100%;
+        margin-bottom:20px;
+        left:0;
+        top:0;
+    }
+    .main-content{
+        margin-left:0;
+    }
 }
