@@ -1,11 +1,5 @@
 [
     {
-        "title": "第一篇博客文章",
-        "date": "2026-10-17",
-        "url": "posts/demo.html",
-        "desc": "我的个人博客，纯手写HTML托管在GitHub Pages"
-    },
-    {
         "title": "INSP 分布",
         "date": "2026-10-17",
         "url": "posts/demo.html",
