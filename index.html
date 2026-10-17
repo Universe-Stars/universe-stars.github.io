@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universe-Stars | 个人博客</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universe-Stars | 个人博客</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <header class="site-header">
-    <h1>Universe-Stars</h1>
-    <nav>
-      <a href="/">首页</a>
-      <a href="about.html">关于</a>
-    </nav>
-  </header>
+    <div class="page-wrap">
+        <!-- 侧边导航栏 -->
+        <aside class="sidebar">
+            <div class="brand">Universe-Stars</div>
+            <button class="hamburger">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-  <main class="container">
-    <section>
-      <h2>📖 文章列表</h2>
-      <ul class="post-list">
-        <!-- JS自动填充文章列表 -->
-      </ul>
-    </section>
-  </main>
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <div class="container">
+                <section>
+                    <h2>📖 文章列表</h2>
+                    <ul class="post-list">
+                        <!-- JS自动填充文章卡片 -->
+                    </ul>
+                </section>
+                <footer class="site-footer">
+                    <p>© 2026 Universe-Stars | GitHub Pages · Handwritten HTML</p>
+                </footer>
+            </div>
+        </main>
+    </div>
 
-  <footer class="site-footer">
-    <p>© 2026 Universe-Stars | GitHub Pages · Handwritten HTML</p>
-  </footer>
-
-  <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
+    <!-- 汉堡菜单切换JS -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.sidebar nav');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+        })
+    </script>
 </body>
+
 </html>
