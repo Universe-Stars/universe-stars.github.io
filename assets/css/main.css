@@ -3,17 +3,20 @@
   --color-bg: #ffffff;
   --color-text: #222222;
   --color-text-secondary: #666666;
-  --color-border: #e5e7eb;
-  --color-card-bg: #fff;
+  --color-border: rgba(229, 231, 235, 0.45);
+  --color-card-bg: rgba(255, 255, 255, 0.62);
+  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.08);
+  --glass-blur: 14px;
   --color-primary: #3b82f6;
-  --radius-md: 0.5rem;
+  --radius-md: 0.75rem;
 }
 [data-theme="dark"] {
   --color-bg: #121212;
   --color-text: #e8e8e8;
   --color-text-secondary: #a9a9a9;
-  --color-border: #2a2a2a;
-  --color-card-bg: #1e1e1e;
+  --color-border: rgba(70, 70, 70, 0.45);
+  --color-card-bg: rgba(30, 30, 30, 0.55);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 * {
   box-sizing: border-box;
@@ -115,7 +118,84 @@ body {
   display: none !important;
 }
 
-/* ========== 环形进度悬浮按钮 + 直达底部按钮 ========== */
+/* ========== 液体玻璃 - 全局控件基础类 ========== */
+.glass {
+  background: var(--color-card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--color-border);
+  box-shadow: var(--glass-shadow);
+}
+.glass:hover {
+  background: rgba(255,255,255,0.72);
+  [data-theme="dark"] & {
+    background: rgba(45,45,45,0.65);
+  }
+}
+
+/* ========== Header导航栏 液体玻璃 ========== */
+header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  max-width: 720px;
+  margin: 1rem auto;
+  border-radius: 999px;
+  position: relative;
+  background: var(--color-card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--color-border);
+  box-shadow: var(--glass-shadow);
+}
+header button {
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  border-radius: 0.6rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  color: var(--color-text);
+  transition: 0.2s ease;
+}
+header button:hover {
+  background: rgba(255,255,255,0.75);
+  [data-theme="dark"] & {
+    background: rgba(55,55,55,0.7);
+  }
+}
+#main-nav a {
+  margin: 0 0.5rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+#main-nav a.active {
+  color:var(--color-primary);
+  font-weight:bold;
+}
+.hamburger {
+  display:none;
+}
+@media (max-width:768px){
+  .hamburger {display:block;}
+  #main-nav {
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100vh;
+    background: var(--color-card-bg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border:none;
+    transform:translateX(-100%);
+    transition:0.3s;
+  }
+  #main-nav.open {transform:translateX(0);}
+}
+
+/* ========== 环形进度悬浮按钮 + 直达底部按钮【液体玻璃】 ========== */
 .float-btn-group {
   position: fixed;
   right: 1.2rem;
@@ -143,13 +223,20 @@ body {
   border-radius: 50%;
   border: 1px solid var(--color-border);
   background: var(--color-card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   color: var(--color-text);
   cursor: pointer;
   position: absolute;
   top:0;left:0;
+  box-shadow: var(--glass-shadow);
+  transition:0.2s;
 }
 .progress-circle-wrap button:hover {
-  background: var(--color-border);
+  background: rgba(255,255,255,0.72);
+  [data-theme="dark"] & {
+    background: rgba(45,45,45,0.65);
+  }
 }
 .progress-circle {
   width:44px;
@@ -171,37 +258,52 @@ body {
   border-radius: 50%;
   border: 1px solid var(--color-border);
   background: var(--color-card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   color: var(--color-text);
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
   transition: 0.2s ease;
+  box-shadow: var(--glass-shadow);
 }
 .float-btn.show {
   opacity: 1;
   pointer-events: auto;
 }
 .float-btn:hover {
-  background: var(--color-border);
+  background: rgba(255,255,255,0.72);
+  [data-theme="dark"] & {
+    background: rgba(45,45,45,0.65);
+  }
 }
 
-/* ========== 代码块样式 + 复制按钮 + 语言标签 ========== */
+/* ========== 代码块样式 + 复制按钮 + 语言标签【液体玻璃】 ========== */
 pre {
   position:relative;
   padding: 1rem;
   border-radius: var(--radius-md);
   overflow:auto;
-  background: #1e1e1e;
+  background: rgba(30,30,30,0.82);
+  backdrop-filter: blur(8px);
   color:#fff;
+  border:1px solid rgba(255,255,255,0.12);
 }
 .copy-btn {
   position:absolute;
   top:0.5rem;
   right:0.5rem;
-  border:none;
+  border:1px solid rgba(255,255,255,0.2);
   padding:0.25rem 0.6rem;
-  border-radius:4px;
+  border-radius:0.4rem;
   cursor:pointer;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(6px);
+  color:#fff;
+  transition:0.2s;
+}
+.copy-btn:hover {
+  background:rgba(255,255,255,0.22);
 }
 .code-lang-label {
   position:absolute;
@@ -216,7 +318,7 @@ pre {
   filter: brightness(0.9) contrast(1.05);
 }
 
-/* ========== 文章目录 TOC ========== */
+/* ========== 文章目录 TOC【液体玻璃】 ========== */
 #tocWrap {
   position:fixed;
   top:8rem;
@@ -226,8 +328,10 @@ pre {
   border-radius:var(--radius-md);
   padding:1rem;
   background:var(--color-card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--glass-shadow);
 }
-.toc-h1{}
 .toc-h2 {padding-left:0.4rem;}
 .toc-h3 {padding-left:0.8rem;}
 #tocList {
@@ -259,13 +363,23 @@ pre {
   }
   #tocWrap.open {transform: translateY(0);}
   #tocToggle {display:block;position:fixed;bottom:90px;right:1rem;z-index:98;}
+  #tocToggle {
+    background: var(--color-card-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border:1px solid var(--color-border);
+    border-radius:999px;
+    padding:0.4rem 0.8rem;
+    box-shadow: var(--glass-shadow);
+  }
 }
 
 /* ========== 图片灯箱 ========== */
 #lightbox {
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index:200;
   display:none;
   align-items:center;
@@ -275,20 +389,27 @@ pre {
 #lightboxImg {
   max-width:90%;
   max-height:90vh;
+  border-radius:0.5rem;
+  border:1px solid rgba(255,255,255,0.15);
 }
 #lightboxClose {
   position:absolute;
   top:1rem;
   right:1rem;
-  border:none;
-  background:#333;
+  border:1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
   color:white;
   width:36px;height:36px;
   border-radius:50%;
   cursor:pointer;
+  transition:0.2s;
+}
+#lightboxClose:hover {
+  background:rgba(255,255,255,0.28);
 }
 
-/* ========== 上一篇下一篇导航卡片 ========== */
+/* ========== 上一篇下一篇导航卡片【液体玻璃】 ========== */
 .post-nav {
   margin-top: 3rem;
   display: grid;
@@ -304,10 +425,17 @@ pre {
   padding:1rem;
   border:1px solid var(--color-border);
   border-radius: var(--radius-md);
+  background: var(--color-card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--glass-shadow);
   transition: 0.2s;
 }
 .post-nav-card:hover{
-  border-color:var(--color-text);
+  background: rgba(255,255,255,0.72);
+  [data-theme="dark"] & {
+    background: rgba(45,45,45,0.65);
+  }
 }
 .post-nav-card.empty{
   opacity:0.35;
@@ -326,16 +454,33 @@ pre {
   text-decoration:none;
 }
 
-/* ========== 搜索弹窗 ========== */
+/* ========== 搜索弹窗【液体玻璃】 ========== */
 #searchWrap {
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index:200;
   display:none;
   padding:2rem;
 }
 #searchWrap.open {display:block;}
+#searchInput {
+  width: min(600px,90%);
+  margin:0 auto;
+  display:block;
+  padding:0.8rem 1rem;
+  border-radius:0.7rem;
+  border:1px solid var(--color-border);
+  background: var(--color-card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  color:var(--color-text);
+  outline:none;
+  font-size:1rem;
+  box-shadow: var(--glass-shadow);
+}
 .search-highlight {
   color:var(--color-primary);
   font-weight:bold;
@@ -345,16 +490,19 @@ pre {
   padding:0.4rem 0;
 }
 
-/* ========== Toast 提示（复制链接） ========== */
+/* ========== Toast 提示（复制链接）【液体玻璃】 ========== */
 #copyToast {
   position:fixed;
   bottom:2rem;
   left:50%;
   transform:translateX(-50%);
   padding:0.5rem 1rem;
-  background:#222;
-  color:#fff;
   border-radius:999px;
+  border:1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color:#fff;
   opacity:0;
   transition:0.2s;
   pointer-events:none;
@@ -367,27 +515,18 @@ pre {
 }
 .font-controller button {
   padding:0.3rem 0.6rem;
+  border:1px solid var(--color-border);
+  border-radius:0.5rem;
+  background: var(--color-card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  color:var(--color-text);
+  cursor:pointer;
+  transition:0.2s;
 }
-
-/* ========== 导航栏、汉堡菜单 ========== */
-.hamburger {
-  display:none;
-}
-#main-nav a.active {
-  color:var(--color-primary);
-  font-weight:bold;
-}
-@media (max-width:768px){
-  .hamburger {display:block;}
-  #main-nav {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100vh;
-    background:var(--color-bg);
-    transform:translateX(-100%);
-    transition:0.3s;
+.font-controller button:hover {
+  background: rgba(255,255,255,0.72);
+  [data-theme="dark"] & {
+    background: rgba(45,45,45,0.65);
   }
-  #main-nav.open {transform:translateX(0);}
 }
