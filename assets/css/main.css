@@ -619,3 +619,7 @@ code {
 [data-theme="dark"] .font-controller button:hover {
   background: rgba(45,45,45,0.65);
 }
+article {
+    user-select: none;
+    -webkit-user-select: none;
+}
